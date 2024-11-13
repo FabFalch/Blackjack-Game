@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="intro">
+    <h1>Welcome to Blackjack</h1>
+    <p>Blackjack is a card game where the goal is to beat the dealer by getting as close to 21 as possible without going over. Hit to take another card, or Stand to keep your total. Once you stand, the dealer will play. Use the betting system to try your luck! Good luck!</p>
+    <button id="start-button">Start Game</button>
+   </div>
+    
+
+<div class="game-container">
+        
+        <div class="bank">Player Bank: <span id="player-bank">100</span> coins</div>
+        <div class="betting-controls">
+            <label id="bet-label" for="bet-amount">Choose Your Bet:</label>
+            <select id="bet-amount">
+                <option id="bet-box" value="10">10 Coins</option>
+                <option id="bet-box" value="20">20 Coins</option>
+                <option id="bet-box" value="50">50 Coins</option>
+            </select>
+            <button id="place-bet-button">Place Bet</button>
+            <div id="current-bet"></div>
+        </div>
+        <div class="hand player-hand">
+            <h2>Player's Hand</h2>
+            <div id="player-cards"></div>
+            <div id="player-total"></div>
+            
+        </div>
+        <div class="hand dealer-hand">
+            <h2>Dealer's Hand</h2>
+            <div id="dealer-cards"></div>
+            <div id="dealer-total"></div>
+        </div>
+        <div class="controls">
+            
+            <button id="play-again-button">Play Again</button>
+            <button id="hit-button">Hit</button>
+            <button id="stand-button">Stand</button>
+        </div>
+        <div class="message-box" id="message"></div>
+    </div>
+
+    
+    <script src="script.js"></script>
+</body>
+</html>
