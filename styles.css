@@ -129,28 +129,30 @@ body {
 
 /* Media */
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
 
     .intro{
-        width: 100%;
+        width: 90%;
+        margin: auto;
     }
+    
     .game-container {
-        width: 100%;
-        padding: 15px;
-    }
-
+            width: 100%;
+            padding: 15px;
+        }
+    
     .controls button {
-        min-width: 80px;
-        padding: 8px;
-        font-size: 0.9em;
-    }
-
+            min-width: 80px;
+            padding: 8px;
+            font-size: 0.9em;
+        }
+    
     .hand {
-        margin: 15px 0;
-        padding: 10px;
-    }
-
+            margin: 15px 0;
+            padding: 10px;
+        }
+    
     .betting-controls select {
-        width: 100%;
+            width: 100%;
+        }
     }
-}
