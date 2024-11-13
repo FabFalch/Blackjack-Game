@@ -1,4 +1,4 @@
-// script.js
+
 // Establishing The Elements
 const game = document.querySelector('.game-container');
 const intro = document.querySelector('.intro')
@@ -35,7 +35,7 @@ function drawCards() {
     return cardsArray[random];
 }
 
-// Function to calculate the total of an array
+
 function calculateTotal(handArray) {
     return handArray.reduce((total, card) => total + card, 0);
 }
@@ -128,7 +128,7 @@ function determineWinner(currentDealerTotal) {
 }
 
 playAgainBtn.addEventListener('click', () => {
-    // Reset game state
+    
     hitBtn.style.display = 'inline-block';
     standBtn.style.display = 'inline-block';
     playAgainBtn.style.display = 'none';
