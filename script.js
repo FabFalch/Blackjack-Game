@@ -33,25 +33,24 @@ standBtn.disabled = true;
 createDeck();
 shuffleDeck();
 
-
+// This function creates a deck by looping through the values array (4 times for 4 suits).
 function createDeck(){
     const values = [2,3,4,5,6,7,8,9,10,10,10,10,11];
 
         for (let i = 0; i < 4; i++) {
             deck = deck.concat(values);
         }
-    
-}
-
+};
+// This function shuffles the deck by looping through the deck and swapping positions of the cards.
 function shuffleDeck() {
     for (let i = deck.length - 1; i > 0; i--) { 
         const j = Math.floor(Math.random() * (i + 1)); 
         [deck[i], deck[j]] = [deck[j], deck[i]]; 
     }
-}
+};
 
 
-
+// This function draws a card using .pop() ensuring the card leaves the array. if there are less than 10 cards a new deck is made and shuffled.
 function drawCards() {
     if (deck.length < 10){
         deck = [];
@@ -75,6 +74,17 @@ placeBetBtn.addEventListener('click', () => {
         betLabel.textContent = `Current Bet: ${currentBet}`
         betAmountSelect.style.display = 'none';
         startBtn.style.display = 'inline-block';
+
+        //Dealer draws the first card
+        let dealerFirstCard = drawCards();
+        dealerHandArray.push(dealerFirstCard);
+        dealerCards.innerHTML = dealerFirstCard;
+
+        let playerFirstCard = drawCards();
+        playerHandArray.push(playerFirstCard);
+        playerCards.innerHTML = playerFirstCard
+
+        
     } else {
         messageArea.textContent = 'Not enough coins to place this bet.';
     }
