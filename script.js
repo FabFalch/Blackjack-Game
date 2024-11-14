@@ -44,9 +44,9 @@ function createDeck(){
 }
 
 function shuffleDeck() {
-    for (let i = deck.length - 1; i > 0; i--) { // Corrected loop condition
-        const j = Math.floor(Math.random() * (i + 1)); // Added parentheses to Math.random()
-        [deck[i], deck[j]] = [deck[j], deck[i]]; // Swap elements
+    for (let i = deck.length - 1; i > 0; i--) { 
+        const j = Math.floor(Math.random() * (i + 1)); 
+        [deck[i], deck[j]] = [deck[j], deck[i]]; 
     }
 }
 
