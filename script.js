@@ -28,6 +28,8 @@ let dealerHandArray = [];
 let playerBank = 100;
 let currentBet = 0;
 
+standBtn.disabled = true;
+
 
 
 function drawCards() {
@@ -63,6 +65,8 @@ startBtn.addEventListener('click', () => {
 });
 
 hitBtn.addEventListener('click', () => {
+    if (currentBet > 0){
+    standBtn.disabled = false;
     let newCard = drawCards();
     playerHandArray.push(newCard);
     playerCards.innerHTML = playerHandArray.join(', ');
@@ -76,7 +80,18 @@ hitBtn.addEventListener('click', () => {
         standBtn.disabled = true;
         messageArea.textContent = 'Too Many!';
         playAgainBtn.style.display = 'inline-block';
+    } else if (total === 21){
+        messageArea.textContent = `You've Got BLACKJACK! You win ${currentBet * 1.5}!`
+        playAgainBtn.style.display = 'inline-block';
+        hitBtn.disabled = true;
+        standBtn.disabled = true;
+        playerBank += currentBet * 2.5;
+        playerBankDisplay.innerHTML = playerBank;
     }
+} else {
+    messageArea.textContent = 'Please place a bet before drawing a card'
+}
+
 });
 
 standBtn.addEventListener('click', () => {
@@ -116,7 +131,7 @@ function determineWinner(currentDealerTotal) {
         playerBank += currentBet * 2;
     } else if (playerTotalValue < currentDealerTotal) {
         messageArea.textContent = `Dealer wins! You Lose ${currentBet}!`;
-    } else {
+    }  else {
         messageArea.textContent = "It's a tie!";
         playerBank += currentBet; 
     }
@@ -134,6 +149,7 @@ playAgainBtn.addEventListener('click', () => {
     playAgainBtn.style.display = 'none';
 
     betLabel.textContent = `Choose Your Bet: `
+    currentBet = 0;
 
     playerHandArray = [];
     dealerHandArray = [];
@@ -145,7 +161,7 @@ playAgainBtn.addEventListener('click', () => {
     messageArea.textContent = '';
 
     hitBtn.disabled = false;
-    standBtn.disabled = false;
+    standBtn.disabled = true;
 
     placeBetBtn.style.display = 'inline-block';
     betAmountSelect.style.display = 'inline-block';
