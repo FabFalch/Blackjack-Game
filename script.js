@@ -29,7 +29,9 @@ let playerBank = 100;
 let currentBet = 0;
 
 standBtn.disabled = true;
+
 createDeck();
+shuffleDeck();
 
 
 function createDeck(){
@@ -51,10 +53,12 @@ function shuffleDeck() {
 
 
 function drawCards() {
-    
-    shuffleDeck();
+    if (deck.length < 10){
+        deck = [];
+        createDeck()
+        shuffleDeck()
+    }
     return deck.pop();
-    
 }
 
 
