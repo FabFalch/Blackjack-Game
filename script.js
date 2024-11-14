@@ -22,19 +22,39 @@ const betAmountSelect = document.getElementById('bet-amount');
 const messageArea = document.getElementById('message');
 
 // The Game
-let cardsArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10];
+let deck = [];
 let playerHandArray = [];
 let dealerHandArray = [];
 let playerBank = 100;
 let currentBet = 0;
 
 standBtn.disabled = true;
+createDeck();
+
+
+function createDeck(){
+    const values = [2,3,4,5,6,7,8,9,10,10,10,10,11];
+
+        for (let i = 0; i < 4; i++) {
+            deck = deck.concat(values);
+        }
+    
+}
+
+function shuffleDeck() {
+    for (let i = deck.length - 1; i > 0; i--) { // Corrected loop condition
+        const j = Math.floor(Math.random() * (i + 1)); // Added parentheses to Math.random()
+        [deck[i], deck[j]] = [deck[j], deck[i]]; // Swap elements
+    }
+}
 
 
 
 function drawCards() {
-    let random = Math.floor(Math.random() * cardsArray.length);
-    return cardsArray[random];
+    
+    shuffleDeck();
+    return deck.pop();
+    
 }
 
 
@@ -171,3 +191,5 @@ playAgainBtn.addEventListener('click', () => {
 
     }
 });
+
+console.log(createDeck())
