@@ -215,6 +215,8 @@ function determineWinner(currentDealerTotal) {
     }
     playerBankDisplay.innerHTML = playerBank;
     playAgainBtn.style.display = 'inline-block';
+    hitBtn.style.display = 'none';
+    standBtn.style.display = 'none';
 
 
     

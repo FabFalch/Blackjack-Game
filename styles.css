@@ -37,6 +37,10 @@ body {
     
 }
 
+#update{
+    margin-top: 0.5rem;
+}
+
 .game-container {
     background-color: hsl(0, 0%, 15%);
     padding: 20px;
