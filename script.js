@@ -170,28 +170,33 @@ standBtn.addEventListener('click', () => {
 function dealerPlays() {
     let currentDealerTotal = calculateTotal(dealerHandArray);
     
-   
+    // Reveal both of the dealer's cards and show the total
     dealerCards.innerHTML = dealerHandArray.join(', ');
-    dealerTotal.innerHTML = `Total: ${currentDealerTotal}`; 
+    dealerTotal.innerHTML = `Total: ${currentDealerTotal}`;
 
     function drawDealerCard() {
+        // Check if the dealer's total is less than 17
         if (currentDealerTotal < 17) {
-            let newCard = drawCards();
-            dealerHandArray.push(newCard);
-            dealerCards.innerHTML = dealerHandArray.join(', ');
+            // Add suspense with a longer delay
+            setTimeout(() => {
+                let newCard = drawCards();
+                dealerHandArray.push(newCard);
+                dealerCards.innerHTML = dealerHandArray.join(', ');
 
-            currentDealerTotal = calculateTotal(dealerHandArray);
-            dealerTotal.innerHTML = `Total: ${currentDealerTotal}`; 
+                currentDealerTotal = calculateTotal(dealerHandArray);
+                dealerTotal.innerHTML = `Total: ${currentDealerTotal}`;
 
-            
-            setTimeout(drawDealerCard, 1000);
+                // Continue drawing cards with a delay if the total is still less than 17
+                drawDealerCard();
+            }, 1500); // Delay of 1500 milliseconds (1.5 seconds)
         } else {
             determineWinner(currentDealerTotal);
         }
     }
 
-    drawDealerCard();
+    drawDealerCard(); // Start the dealer's turn
 }
+
 
 
 function determineWinner(currentDealerTotal) {
