@@ -137,24 +137,32 @@ body {
 @media (max-width: 500px) {
 
     .intro{
-        width: 90%;
+        width: 70%;
         margin: auto;
     }
-    
+    body{
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1rem;
+
+    }
     .game-container {
             width: 100%;
-            padding: 15px;
+            padding: 2rem;
+            margin: auto;
         }
     
     .controls button {
-            min-width: 80px;
+            min-width: 90px;
             padding: 8px;
             font-size: 0.9em;
         }
     
     .hand {
             margin: 15px 0;
-            padding: 10px;
+            padding: 1rem
         }
     
     .betting-controls select {

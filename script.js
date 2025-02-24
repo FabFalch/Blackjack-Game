@@ -36,7 +36,6 @@ standBtn.style.display = 'none'
 createDeck();
 shuffleDeck();
 
-// This function creates a deck by looping through the values array (4 times for 4 suits).
 function createDeck(){
     const values = [2,3,4,5,6,7,8,9,10,10,10,10,11];
 
@@ -44,7 +43,7 @@ function createDeck(){
             deck = deck.concat(values);
         }
 };
-// This function shuffles the deck by looping through the deck and swapping positions of the cards.
+
 function shuffleDeck() {
     for (let i = deck.length - 1; i > 0; i--) { 
         const j = Math.floor(Math.random() * (i + 1)); 
@@ -53,7 +52,7 @@ function shuffleDeck() {
 };
 
 
-// This function draws a card using .pop() ensuring the card leaves the array. if there are less than 10 cards a new deck is made and shuffled.
+
 function drawCards() {
     if (deck.length < 10){
         deck = [];
@@ -76,7 +75,7 @@ function dealCards(){
     const total = calculateTotal(playerHandArray);
     playerTotal.innerHTML = `Total: ${total}`;
 
-    // Check for an immediate Blackjack
+    
     if (total === 21) {
         messageArea.textContent = `You've Got BLACKJACK! You win ${currentBet * 1.5}!`;
         playAgainBtn.style.display = 'inline-block';
@@ -85,7 +84,7 @@ function dealCards(){
         playerBank += currentBet * 2.5;
         playerBankDisplay.innerHTML = playerBank;
     } else {
-        // Show the "Hit" and "Stand" buttons if no immediate Blackjack
+        
         hitBtn.style.display = 'inline-block';
         standBtn.style.display = 'inline-block';
     }
@@ -106,7 +105,7 @@ placeBetBtn.addEventListener('click', () => {
         betAmountSelect.style.display = 'none';
         betLabel.textContent = `Current Bet: ${currentBet}`;
 
-        // Show the "Deal Cards" button
+        
         startBtn.style.display = 'inline-block';
     } else {
         messageArea.textContent = 'Not enough coins to place this bet.';
@@ -139,7 +138,7 @@ hitBtn.addEventListener('click', () => {
     playerHandArray.push(newCard);
     playerCards.innerHTML = playerHandArray.join(', ');
 
-    // Calculate and display the total of the player's hand
+ 
     const total = calculateTotal(playerHandArray);
     playerTotal.innerHTML = `Total: ${total}`;
 
@@ -170,14 +169,13 @@ standBtn.addEventListener('click', () => {
 function dealerPlays() {
     let currentDealerTotal = calculateTotal(dealerHandArray);
     
-    // Reveal both of the dealer's cards and show the total
     dealerCards.innerHTML = dealerHandArray.join(', ');
     dealerTotal.innerHTML = `Total: ${currentDealerTotal}`;
 
     function drawDealerCard() {
-        // Check if the dealer's total is less than 17
+        
         if (currentDealerTotal < 17) {
-            // Add suspense with a longer delay
+            
             setTimeout(() => {
                 let newCard = drawCards();
                 dealerHandArray.push(newCard);
@@ -186,15 +184,15 @@ function dealerPlays() {
                 currentDealerTotal = calculateTotal(dealerHandArray);
                 dealerTotal.innerHTML = `Total: ${currentDealerTotal}`;
 
-                // Continue drawing cards with a delay if the total is still less than 17
+                
                 drawDealerCard();
-            }, 1500); // Delay of 1500 milliseconds (1.5 seconds)
+            }, 1500); 
         } else {
             determineWinner(currentDealerTotal);
         }
     }
 
-    drawDealerCard(); // Start the dealer's turn
+    drawDealerCard(); 
 }
 
 
